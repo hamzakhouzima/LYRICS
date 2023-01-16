@@ -38,7 +38,7 @@ include '../controller/signup.php';
                 <form method='post'>
 
                 <div class="form-outline mb-4">
-  <?php if (isset($_SESSION['signup_error'] )): ?>
+         <?php if (isset($_SESSION['signup_error'] )): ?>
 				<div class="alert alert-green alert-dismissible fade show " style="background-color:red;">
 				<strong>Please!</strong>
 					<?php 

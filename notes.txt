@@ -1,0 +1,8 @@
+SELECT users.* FROM users
+INNER JOIN orders ON users.id = orders.user_id
+WHERE orders.user_id = 'value'
+to bring data from the tracks table whit the condition of the user email to show only his added content
+
+artist : can add update delete the songs and lyrics
+admin : can add and delete users accounts 
+user : can only see the other artists content 

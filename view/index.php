@@ -1,13 +1,3 @@
-<?php 
-session_start();
-
-    if(!isset($_SESSION['log'])){
-        header("location:view_login.php");
-    }
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,6 +7,15 @@ session_start();
     <title>Document</title>
 </head>
 <body>
-    waaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa3
+
+
+<form method='post'>
+
+<input name=''>
+<input name=''>
+
+
+</form>
+    
 </body>
 </html>
