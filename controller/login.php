@@ -21,12 +21,12 @@ $email=$pass = "";
 
             if($row['email'] === $email && $verify){
 
-            //    $_SESSION['log'] = $verify;
-               header("location:index.php");
+               $_SESSION['log'] = $verify;
+               header("location:../view/index.php");
 
             }else{
                 
-                $_SESSION['notlog'] = !$verify;  
+                $_SESSION['login_error'] = 'login failed , try again !!';  
                 // continue;      
                 }
 
@@ -47,7 +47,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $pass = $_POST['log_password'];
     if(empty($_POST['log_email'])){
 
-        $_SESSION['email_error'] = "enter your email ";
+        $_SESSION['email_error'] = "Please! complete the form ";
         // header("location:view_login.php");
         // die;
 
@@ -55,7 +55,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     if(empty($_POST['log_password'])){
 
-        $_SESSION['password_error'] = "enter your password ";
+        $_SESSION['password_error'] = "Please! complete the form";
         // header("location:view_login.php");
         // die;
 

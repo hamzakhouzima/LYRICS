@@ -1,64 +1,84 @@
-<form method="post"> 
-  <!-- Email input -->
-  <div class="form-outline mb-4">
-  <?php if (isset($_SESSION['email_error'])): ?>
+<section class="h-100 gradient-form" id="back" style="background-color: #eee;">
+
+  <div class="container py-5 h-100" >
+  
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-xl-10">
+        <div class="card rounded-3 text-black">
+          <div class="row g-0">
+            <div class="col-lg-6">
+              <div class="card-body p-md-5 mx-md-4">
+
+                <div class="text-center">
+                  <img src="assets/logo.png" style="width: 185px;" alt="logo">
+                 
+                  <h4 class="mt-1 mb-5 pb-1">We are The Lotus Team</h4>
+                </div>
+
+                <form method='post'>
+
+                <div class="form-outline mb-4">
+  <?php if (isset($_SESSION['signup_error'] )): ?>
 				<div class="alert alert-green alert-dismissible fade show " style="background-color:red;">
 				<strong>Please!</strong>
 					<?php 
-						echo $_SESSION['email_error']; 
-                        unset($_SESSION['email_error']);
+						echo $_SESSION['signup_error']; 
+                        unset($_SESSION['signup_error']);
 						
 					?>
           
 				</div>
 			<?php endif ?>
-    <input type="email" id="form2Example1" class="form-control"  name="log_email" />
-    <label class="form-label" for="form2Example1">Email address</label>
+  
+   
   </div>
+                 <strong> <p>Please login to your account</p></strong>
 
-  <!-- Password input -->
-  <div class="form-outline mb-4">
-    <input type="password" id="form2Example2" class="form-control" name="log_password"/>
-    <label class="form-label" for="form2Example2">Password</label>
-  </div>
+                  <div class="form-outline mb-4">
+                  <label class="form-label" for="form2Example11">first name</label>
+                    <input type="email" id="form2Example11" class="form-control"  name="fname" placeholder="first name" />
+                  </div>
 
-  <!-- 2 column grid layout for inline styling -->
-  <div class="row mb-4">
-    <div class="col d-flex justify-content-center">
-      <!-- Checkbox -->
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
-        <label class="form-check-label" for="form2Example31"> Remember me </label>
+                  <div class="form-outline mb-4">
+                  <label class="form-label" for="form2Example22">last name</label>
+                    <input type="password" id="form2Example22" class="form-control" name="lname"  placeholder="last name" />
+                  </div>
+                  <div class="form-outline mb-4">
+                  <label class="form-label" for="form2Example22">email</label>
+                    <input type="password" id="form2Example22" class="form-control" name="email"  placeholder="email" />
+                  </div>
+                  <div class="form-outline mb-4">
+                  <label class="form-label" for="form2Example22">Password</label>
+                    <input type="password" id="form2Example22" class="form-control" name="password"  placeholder="password" />
+                  </div>
+                  <div class="form-outline mb-4">
+                  <label class="form-label" for="form2Example22">Password confirmation</label>
+                    <input type="password" id="form2Example22" class="form-control" name="cpassword"  placeholder="repeat the password" />
+                  </div>
+
+                  <div class="text-center pt-1 mb-5 pb-1">
+                    <input class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type='submit'><br>
+                    <label class="form-label" for="form2Example22" >Login</label>
+                    <a class="text-muted" href="#!">Forgot password?</a>
+                  </div>
+
+                  <div class="d-flex align-items-center justify-content-center pb-4">
+                    <p class="mb-0 me-2">Don't have an account?</p>
+                    <button type="button" class="btn btn-outline-danger">Create new</button>
+                  </div>
+
+                </form>
+
+              </div>
+            </div>
+            <div class="col-lg-6 d-flex align-items-center gradient-custom-2"  id='side'> 
+              <!-- <div class="text-white px-3 py-4 p-md-5 mx-md-4" >
+                
+              </div> -->
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
-    <div class="col">
-      <!-- Simple link -->
-      <a href="#!">Forgot password?</a>
-    </div>
   </div>
-
-  <!-- Submit button -->
-  <button type="button" class="btn btn-primary btn-block mb-4" name="submit">Sign in</button>
-
-  <!-- Register buttons -->
-  <div class="text-center">
-    <p>Not a member? <a href="#!">Register</a></p>
-    <p>or sign up with:</p>
-    <button type="button" class="btn btn-link btn-floating mx-1">
-      <i class="fab fa-facebook-f"></i>
-    </button>
-
-    <button type="button" class="btn btn-link btn-floating mx-1">
-      <i class="fab fa-google"></i>
-    </button>
-
-    <button type="button" class="btn btn-link btn-floating mx-1">
-      <i class="fab fa-twitter"></i>
-    </button>
-
-    <button type="button" class="btn btn-link btn-floating mx-1">
-      <i class="fab fa-github"></i>
-    </button>
-  </div>
-</form>
+</section>
