@@ -27,7 +27,7 @@ $email=$pass = "";
             }else{
                 
                 $_SESSION['login_error'] = 'login failed , try again !!';  
-                // continue;      
+                     
                 }
 
 
