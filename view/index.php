@@ -211,30 +211,7 @@ include '../controller/content.php';
             </div>
           </div>
         </div>
-        <!-- <div class="row">
-          <div class="col-md-6 mb-3">
-            <div class="card h-100">
-              <div class="card-header">
-                <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
-                Area Chart Example
-              </div>
-              <div class="card-body">
-                <canvas class="chart" width="400" height="200"></canvas>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 mb-3">
-            <div class="card h-100">
-              <div class="card-header">
-                <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
-                Area Chart Example
-              </div>
-              <div class="card-body">
-                <canvas class="chart" width="400" height="200"></canvas>
-              </div>
-            </div>
-          </div>
-        </div> -->
+       
         <div class="row">
           <div class="col-md-12 mb-3">
             <div class="card">
@@ -271,9 +248,9 @@ include '../controller/content.php';
                           <th>".$row['lyrics']."</th>
                           <th>
                          <form method='post'>
-                          <input type='hidden' name='id' value=".$row['id'].">
-                          <button type='submit'  class='btn btn-danger' name='delete' >Delete</button><br>
-                          <button type='button' id='update' onclick='setAtt()' class='btn btn-success'  name='update'>Update</button></th>
+                          <input class='id_hidden' type='hidden' name='id' value=".$row['id']." >
+                          <button type='submit'  class='btn btn-danger' name='delete'  >Delete</button><br>
+                          <button type='button' id='update' onclick='setAtt();document.querySelector(".'".id_updated"'.").value=this.parentElement.querySelector(".'".id_hidden"'.").value;console.log(".'"tototot"'.");console.log(document.querySelector(".'".id_updated"'.").value)' class='btn btn-success'  name='update'>Update</button></th>
                           </form>
                         </tr>
                       </tbody>";
@@ -294,10 +271,9 @@ include '../controller/content.php';
 
 
 
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" >Launch demo modal</button>
+      <button type="button" class="btn btn-primary"  onclick='resetAtt()' data-bs-toggle="modal" data-bs-target="#exampleModal" >Launch demo modal</button>
   
 
-<!----------------------------------------------------------->
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
   <div class="modal-dialog" role="document">
@@ -315,6 +291,7 @@ include '../controller/content.php';
       <form method='post' >
 
   <div class="form-group">
+    <input type="hidden" class="id_updated" name="u_id"/>
     <label for="exampleInputEmail1" >Artist Name</label>
     <input type="text" class="form-control" id="exampleInputEmail1" name='artist'  placeholder="Artist">
   </div>
@@ -352,52 +329,12 @@ include '../controller/content.php';
 
 
     </main>
-    <!-- <script src="./js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.2/dist/chart.min.js"></script>
-    <script src="./js/jquery-3.5.1.js"></script>
-    <script src="./js/jquery.dataTables.min.js"></script>
-    <script src="./js/dataTables.bootstrap5.min.js"></script>
-    <script src="./js/script.js"></script>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 
-
-
-
-
-    
-<script >
-
-
-let button = document.getElementsByName('update');
-
-let artist = document.getElementById('exampleInputEmail1');
-let album = document.getElementById('exampleInputPassword1');
-let track = document.getElementById('exampleCheck1');
-let lyrics = document.getElementById('exampleCheck2');
-
-
-// button.addEventListener("click", setAtt);
-
-function setAtt(){
-
-for(let i=0 ; i<button.length; i++){
-    button[i].setAttribute('data-bs-toggle','modal')
-    button[i].setAttribute('data-bs-target','#exampleModal')
-}
- 
-    artist.setAttribute('name','u_artist');
-    album.setAttribute('name','u_album');
-    track.setAttribute('name','u_track');
-    lyrics.setAttribute('name','u_lyrics');
-
-
-
-}
-</script>
+<script src='main.js'></script>
 
   </body>
 </html>

@@ -33,21 +33,42 @@ session_start();
 
         public function updateMusic($id,$artist,$album,$track,$lyrics){
            
-                if(isset($artist)){
+         try{
 
-                    echo $artist;
-                }
-
-            $sql = "UPDATE tracks SET artist='$artist',album='$album',track_title='$track',lyrics='$lyrics'  WHERE id='$id' ";
+            $sql = "UPDATE tracks SET artist=:value1 , album=:value2, track_title=:value3 , lyrics=:value4  WHERE id=:value5 ";
             $stmt = $this->conn->prepare($sql);
             
-            // $stmt->bindValue(':value1', $newValue1);
-            // $stmt->bindValue(':value2', $newValue2);
-            // $stmt->bindValue(':id', $id);
+            
+            $stmt->bindParam(':value1', $artist);
+            $stmt->bindParam(':value2',$album);
+            $stmt->bindParam(':value3', $track);
+            $stmt->bindParam(':value4', $lyrics);
+            $stmt->bindParam(':value5', $id);
 
             $stmt -> execute();
 
+         } catch (PDOException $e){
+            echo "Error: " . $e->getMessage();
         }
+
+        }
+
+
+
+        public function statistics(){
+
+            $sql ="SELECT count(*) FROM tracks ";
+            $stmt = $this->conn->prepare($sql);
+            $stmt -> execute();
+            $rows = $stmt->fetchAll();
+            return $rows;
+
+
+
+        }
+
+
+
     }
 
 
@@ -83,12 +104,15 @@ $obj->getMusic();
         
     if(!empty($_POST['u_artist']) && !empty($_POST['u_album']) && !empty($_POST['u_track']) && !empty($_POST['u_lyrics'])){
            
-        
-            $id = $_POST['id'];
+            
+            $id = $_POST['u_id'];
             $u_artist = $_POST['u_artist'];
             $u_album = $_POST['u_album'];
             $u_track = $_POST['u_track'];
             $u_lyrics = $_POST['u_lyrics'];
+            
+            // var_dump($_POST);
+            // die('hhhhhhhhhhhhhhhhhhh');
             $obj -> updateMusic($id,$u_artist,$u_album,$u_track,$u_lyrics);
 
 
