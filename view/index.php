@@ -14,15 +14,7 @@ include '../controller/content.php';
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
-    />
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-
-    <link rel="stylesheet" href="assets/css/dataTables.bootstrap5.min.css" />-->
-    <!-- <link rel="stylesheet" href="assets/css/style.css" />  -->
+   
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <title>Frontendfunn - Bootstrap 5 Admin Dashboard Template</title>
@@ -30,6 +22,9 @@ include '../controller/content.php';
   </head>
 
   <body>
+
+
+
 
     <!-- top navigation bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -253,35 +248,42 @@ include '../controller/content.php';
                     class="table table-striped data-table"
                     style="width: 100%"
                   >
-                    <thead>
+                   
                       <tr>
                         <th>Artist Name</th>
                         <th>Album</th>
                         <th>Track</th>
                         <th>Lyrics</th>
+                        <th>Modify</th>
                         
                       </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                       
-                      </tr>
                     
-                    </tbody>
-                    <!-- <tfoot>
-                      <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
-                      </tr>
-                    </tfoot> -->
+
+                    <?php 
+                    $rows=$obj->getMusic();
+                    foreach($rows as $row){
+                     echo  "
+                      <tbody>
+                        <tr>
+                          <th>".$row['artist']."</th>
+                          <th>".$row['album']."</th>
+                          <th>".$row['track_title']."</th>
+                          <th>".$row['lyrics']."</th>
+                          <th>
+                         <form method='post'>
+                          <input type='hidden' name='id' value=".$row['id'].">
+                          <button type='submit'  class='btn btn-danger' name='delete' >Delete</button><br>
+                          <button type='button' id='update' onclick='setAtt()' class='btn btn-success'  name='update'>Update</button></th>
+                          </form>
+                        </tr>
+                      </tbody>";
+                      }
+              
+                    ?>
+
+                    
+               
+                   
                   </table>
                 </div>
               </div>
@@ -310,7 +312,7 @@ include '../controller/content.php';
 
 
 
-      <form method='post'>
+      <form method='post' >
 
   <div class="form-group">
     <label for="exampleInputEmail1" >Artist Name</label>
@@ -329,11 +331,11 @@ include '../controller/content.php';
   </div>
 
   <div class="form-group ">
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        <label class="form-check-label" for="exampleCheck1">lyrics</label>
 
-    <textarea type="text" class="form-control" id='exampleCheck1' name='lyrics' placeholder="Track Name"></textarea>
+    <textarea type="text" class="form-control" id='exampleCheck2' name='lyrics' placeholder="Track Name"></textarea>
   </div>
-  <button type="submit" class="btn btn-primary" style="margin-top=3cm;">Submit</button>
+  <button type="submit" class="btn btn-primary" name="data_submit">Submit</button>
 </form>
 
 
@@ -361,7 +363,41 @@ include '../controller/content.php';
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-<script src='main.js'></script>
+
+
+
+
+
+    
+<script >
+
+
+let button = document.getElementsByName('update');
+
+let artist = document.getElementById('exampleInputEmail1');
+let album = document.getElementById('exampleInputPassword1');
+let track = document.getElementById('exampleCheck1');
+let lyrics = document.getElementById('exampleCheck2');
+
+
+// button.addEventListener("click", setAtt);
+
+function setAtt(){
+
+for(let i=0 ; i<button.length; i++){
+    button[i].setAttribute('data-bs-toggle','modal')
+    button[i].setAttribute('data-bs-target','#exampleModal')
+}
+ 
+    artist.setAttribute('name','u_artist');
+    album.setAttribute('name','u_album');
+    track.setAttribute('name','u_track');
+    lyrics.setAttribute('name','u_lyrics');
+
+
+
+}
+</script>
 
   </body>
 </html>
