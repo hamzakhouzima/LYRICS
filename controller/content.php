@@ -82,10 +82,7 @@ $obj->getMusic();
         $album = $_POST['album'];
         $track = $_POST['track'];
         $lyrics = $_POST['lyrics'];
-
-
             $obj -> setMusic($artist,$album,$track,$lyrics);
-
         }
         else{
         $_SESSION['form'] = 'complet the form'; //modal form validation must be done 
@@ -95,24 +92,18 @@ $obj->getMusic();
 
     if(isset($_POST['delete'])){
         // if(isset($_POST['delete'])){
-
             $id = $_POST['id'];
             $obj->deleteMusic($id);
-
         }
 
         
     if(!empty($_POST['u_artist']) && !empty($_POST['u_album']) && !empty($_POST['u_track']) && !empty($_POST['u_lyrics'])){
            
-            
             $id = $_POST['u_id'];
             $u_artist = $_POST['u_artist'];
             $u_album = $_POST['u_album'];
             $u_track = $_POST['u_track'];
             $u_lyrics = $_POST['u_lyrics'];
-            
-            // var_dump($_POST);
-            // die('hhhhhhhhhhhhhhhhhhh');
             $obj -> updateMusic($id,$u_artist,$u_album,$u_track,$u_lyrics);
 
 
